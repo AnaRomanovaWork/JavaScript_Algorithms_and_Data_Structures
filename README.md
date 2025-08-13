@@ -1,9 +1,10 @@
 # JavaScript_Algorithms_and_Data_Structures
----------------------
+
 This repository contains my solutions and projects from the **freeCodeCamp JavaScript Algorithms and Data Structures** certification course.
 
----------------------
+
 ## Calorie counter project
+[Calorie counter project]((https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/calorie_counter))
 A web app where users enter their daily calorie goal and the calories they’ve eaten for each meal. 
 The program totals the calories, compares them to the goal, and displays whether the user is in a surplus or deficit.
 
