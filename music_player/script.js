@@ -6,7 +6,7 @@ const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
 const shuffleButton = document.getElementById("shuffle");
 const allSongs = [
-    {
+  {
     id: 0,
     title: "Scratching The Surface",
     artist: "Quincy Larson",
@@ -14,7 +14,7 @@ const allSongs = [
     src: "https://cdn.freecodecamp.org/curriculum/js-music-player/scratching-the-surface.mp3",
   },
 
-  
+
   {
     id: 1,
     title: "Can't Stay Down",
@@ -39,7 +39,7 @@ let userData = {
 };
 
 const renderSongs = (array) => {
-    const songsHTML = array.map((song) => {
+  const songsHTML = array.map((song) => {
     return `
       <li id="song-${song.id}" class="playlist-song">
       <button class="playlist-song-info">
@@ -55,6 +55,26 @@ const renderSongs = (array) => {
       </li>
       `;
   })
-  .join("");
+    .join("");
+  playlistSongs.innerHTML = songsHTML;
 };
+
+const sortSongs = () => {
+  userData?.songs.sort((a,b) => {
+    if (a.title < b.title) {
+      return -1;
+    }
+
+    if (a.title > b.title) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  return userData?.songs;
+};
+
+renderSongs(sortSongs());
+
 
