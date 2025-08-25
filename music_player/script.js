@@ -111,7 +111,7 @@ const playNextSong = () => {
   }
 };
 
-nextButton.addEventListener("click",  playNextSong);  
+nextButton.addEventListener("click",  playNextSong);
 
 playButton.addEventListener("click", () => {
   if (userData?.currentSong === null) {
