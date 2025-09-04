@@ -6,6 +6,7 @@ const nextButton = document.getElementById("next");
 const previousButton = document.getElementById("previous");
 const shuffleButton = document.getElementById("shuffle");
 
+//hardcoded songs objects
 const allSongs = [
   {
     id: 0,
@@ -79,13 +80,17 @@ const allSongs = [
   },
 ];
 
+//create new audio project
 const audio = new Audio();
+
+//create new object for user
 let userData = {
   songs: [...allSongs],
   currentSong: null,
   songCurrentTime: 0,
 };
 
+//function to play song
 const playSong = (id) => {
   const song = userData?.songs.find((song) => song.id === id);
   audio.src = song.src;
@@ -105,33 +110,7 @@ const playSong = (id) => {
   audio.play();
 };
 
-const shuffle = () => {
-  userData?.songs.sort(() => Math.random() - 0.5);
-  userData.currentSong = null;
-  userData.songCurrentTime = 0;
-
-  renderSongs(userData?.songs);
-  pauseSong();
-  setPlayerDisplay();
-  setPlayButtonAccessibleText();
-};
-
-const setPlayButtonAccessibleText = () => {
-  const song = userData?.currentSong || userData?.songs[0];
-  playButton.setAttribute("aria-label", song?.title ? `Play ${song.title}` : "Play")
-};
-
-const deleteSong = (id) => {
-  if (userData?.currentSong?.id === id) {
-    userData.currentSong = null;
-    userData.songCurrentTime = 0;
-    pauseSong();
-    setPlayerDisplay();
-  }
-  userData.songs = userData?.songs.filter((song) => song.id !== id);
-
-};
-
+//function to pause the song
 const pauseSong = () => {
   userData.songCurrentTime = audio.currentTime;
 
@@ -139,6 +118,7 @@ const pauseSong = () => {
   audio.pause();
 };
 
+//function to play next song
 const playNextSong = () => {
   if (userData?.currentSong === null) {
     playSong(userData?.songs[0].id);
@@ -150,6 +130,7 @@ const playNextSong = () => {
   }
 };
 
+//function to play previous song
 const playPreviousSong = () => {
   if (userData?.currentSong === null) return;
   else {
@@ -160,6 +141,34 @@ const playPreviousSong = () => {
   }
 };
 
+//function to shuffle all audios
+const shuffle = () => {
+  userData?.songs.sort(() => Math.random() - 0.5);
+  userData.currentSong = null;
+  userData.songCurrentTime = 0;
+
+  renderSongs(userData?.songs);
+  pauseSong();
+  setPlayerDisplay();
+  setPlayButtonAccessibleText();
+};
+
+//function to delete song 
+const deleteSong = (id) => {
+  if (userData?.currentSong?.id === id) {
+    userData.currentSong = null;
+    userData.songCurrentTime = 0;
+    
+    pauseSong();
+    setPlayerDisplay();
+  }
+  userData.songs = userData?.songs.filter((song) => song.id !== id);
+  renderSongs(userData?.songs); 
+  highlightCurrentSong(); 
+  setPlayButtonAccessibleText();
+};
+
+//function to display currently playing song
 const setPlayerDisplay = () => {
   const playingSong = document.getElementById("player-song-title");
   const songArtist = document.getElementById("player-song-artist");
@@ -169,6 +178,7 @@ const setPlayerDisplay = () => {
   songArtist.textContent = currentArtist ? currentArtist : "";
 };
 
+//function to highlight song that are playing
 const highlightCurrentSong = () => {
   const playlistSongElements = document.querySelectorAll(".playlist-song");
   const songToHighlight = document.getElementById(
@@ -182,6 +192,7 @@ const highlightCurrentSong = () => {
   if (songToHighlight) songToHighlight.setAttribute("aria-current", "true");
 };
 
+//function to render all songs
 const renderSongs = (array) => {
   const songsHTML = array
     .map((song) => {
@@ -206,13 +217,29 @@ const renderSongs = (array) => {
   if (userData?.songs.length === 0) {
     const resetButton = document.createElement("button");
     const resetText = document.createTextNode("Reset Playlist");
+    
     resetButton.id = "reset";
     resetButton.ariaLabel = "Reset playlist";
     resetButton.appendChild(resetText);
     playlistSongs.appendChild(resetButton);
+
+    resetButton.addEventListener("click", () => {
+      userData.songs = [...allSongs];
+
+      renderSongs(sortSongs()); 
+      setPlayButtonAccessibleText();
+      resetButton.remove();
+    });
   }
 };
 
+//function to add accessible text
+const setPlayButtonAccessibleText = () => {
+  const song = userData?.currentSong || userData?.songs[0];
+  playButton.setAttribute("aria-label", song?.title ? `Play ${song.title}` : "Play")
+};
+
+//function to get current index of the song
 const getCurrentSongIndex = () => userData?.songs.indexOf(userData?.currentSong);
 
 playButton.addEventListener("click", () => {
@@ -246,13 +273,7 @@ audio.addEventListener("ended", () => {
   }
 });
 
-resetButton.addEventListener("click", () => {
-  userData.songs = [...allSongs];
-  renderSongs(sortSongs());
-  setPlayButtonAccessibleText();
-  resetButton.remove();
-});
-
+//function to sort songs
 const sortSongs = () => {
   userData?.songs.sort((a, b) => {
     if (a.title < b.title) {
