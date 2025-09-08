@@ -28,6 +28,17 @@ The program totals the calories, compares them to the goal, and displays whether
 - Controlling element visibility with the classList property
 - Structuring a simple user input → logic → output flow in a web app
 
+## [Music player](https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/music_player)
+
+A web app where user can listen music from the list of tracks.
+
+**What I Learned**
+- Web Audio API – working with audio in the browser
+- JavaScript features: Spread operator (...), Arrow functions (=>), Optional chaining (?.)
+- Array methods: map(), forEach(), filter(), find(), sort(), indexOf(), join()
+- Callbacks – passing functions as arguments
+- DOM manipulation: textContent, innerText vs createTextNode(), createElement(), appendChild(), setAttribute()
+
 
 
 
