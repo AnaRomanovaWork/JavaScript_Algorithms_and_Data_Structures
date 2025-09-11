@@ -39,6 +39,13 @@ A web app where user can listen music from the list of tracks.
 - Callbacks – passing functions as arguments
 - DOM manipulation: textContent, innerText vs createTextNode(), createElement(), appendChild(), setAttribute()
 
+## [Palindrome checker](https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/palindrome_checker)
+
+A simple web application built with JavaScript, HTML, and CSS that checks whether an input value is a palindrome. 
+It ignores punctuation, spaces, and capitalization to accurately detect palindromes.
+
+This project was completed as the final assignment for the first part of the JavaScript Algorithms and Data Structures course. 
+
 
 
 
