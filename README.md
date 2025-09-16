@@ -2,6 +2,18 @@
 
 This repository contains my solutions and projects from the **freeCodeCamp JavaScript Algorithms and Data Structures** certification course.
 
+## [Date formatter project](https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/date_formatter)
+This project focuses on working with dates in JavaScript.
+
+**What I learned:**
+-How to create and manipulate Date objects
+-How to extract and set specific parts of a date
+-How to calculate time differences
+-The difference between input and change events
+-How to use switch statements for multiple conditions
+-How to split strings into arrays and reverse arrays or strings
+
+
 ## [Rock, Paper, Scissors Game project](https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/rock_paper_scissors_game)
 
 A simple interactive Rock-Paper-Scissors web game built with HTML, CSS, and JavaScript. 
