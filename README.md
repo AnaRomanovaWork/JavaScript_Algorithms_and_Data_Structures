@@ -2,6 +2,25 @@
 
 This repository contains my solutions and projects from the **freeCodeCamp JavaScript Algorithms and Data Structures** certification course.
 
+## [Football team cards project](https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/football_team_cards)
+
+The Football Team Cards project dynamically displays information about Argentina’s 1986 World Cup-winning squad. 
+Using a combination of DOM manipulation, modern JavaScript features, and event handling, this project shows how to process structured data and render it interactively on a web page.
+
+**Key Features**
+- Hardcoded dataset: Player and coach details are stored in a frozen object (Object.freeze() ensures immutability).
+- Destructuring: The team, sport, year, and coach values are extracted using object destructuring for readability.
+- Dynamic rendering: Player cards are created with the map() method and displayed in the DOM.
+- Filtering with dropdown menu: Users can filter players by position (forward, midfielder, defender, goalkeeper) or by those with a nickname.
+- Default parameters: The setPlayerCards() function uses a default argument to show all players when no filter is selected.
+-Switch statement: The dropdown is handled with a switch to select and filter different player groups.
+
+**What I learned**
+- The importance of immutability in data structures with Object.freeze().
+- Writing cleaner code with object destructuring and default function parameters.
+- Creating dynamic, interactive UI elements with event listeners and filtering logic.
+- Using modern JavaScript methods (map(), filter()) to transform data.
+
 ## [Date formatter project](https://github.com/AnaRomanovaWork/JavaScript_Algorithms_and_Data_Structures/tree/master/date_formatter)
 This project focuses on working with dates in JavaScript.
 
