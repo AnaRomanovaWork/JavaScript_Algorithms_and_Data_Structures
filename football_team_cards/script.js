@@ -5,6 +5,8 @@ const headCoach = document.getElementById("head-coach");
 const playerCards = document.getElementById("player-cards");
 const playersDropdownList = document.getElementById("players");
 
+
+//hardcoded team
 const myFavoriteFootballTeam = {
     team: "Argentina",
     sport: "Football",
@@ -170,14 +172,18 @@ const myFavoriteFootballTeam = {
     },]
 };
 
+//freezing data in object
 Object.freeze(myFavoriteFootballTeam);
+//destructure the object
 const { sport, team, year, players } = myFavoriteFootballTeam;
 const { coachName } = myFavoriteFootballTeam.headCoach;
+//assign the values to show it to user
 typeOfSport.textContent = sport;
 teamName.textContent = team;
 worldCupYear.textContent = year;
 headCoach.textContent = coachName;
 
+//function to set player cards
 const setPlayerCards = (arr = players) => {
   playerCards.innerHTML += arr
     .map(
@@ -193,3 +199,35 @@ const setPlayerCards = (arr = players) => {
     )
     .join("");
 };
+
+//function to handle dropdown menu selection
+playersDropdownList.addEventListener("change", (e) => {
+  playerCards.innerHTML = "";
+
+  switch (e.target.value) {
+    case "nickname":
+      setPlayerCards(players.filter((player) => player.nickname !== null));
+      break;
+    case "forward":
+      setPlayerCards(players.filter((player) => player.position === "forward"));
+      break;
+    case "midfielder":
+      setPlayerCards(
+        players.filter((player) => player.position === "midfielder")
+      );
+      break;
+    case "defender":
+      setPlayerCards(
+        players.filter((player) => player.position === "defender")
+      );
+      break;
+    case "goalkeeper":
+      setPlayerCards(
+        players.filter((player) => player.position === "goalkeeper")
+      );
+      break;
+
+default:
+setPlayerCards();
+    }
+});
